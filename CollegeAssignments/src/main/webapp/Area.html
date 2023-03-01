@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Area of Rectangle</title>
+</head>
+<body>
+<input id="l" type="number" placeholder="Enter Length: ">
+<input id="w" type="number" placeholder="Enter width: ">
+<input type="submit" onclick="call()">
+<a target="_blank" href="date.jsp">click to count link</a>
+
+<script type="text/javascript">
+function call(){
+let l =	Number(document.querySelector("#l").value);
+let w =	Number(document.querySelector("#w").value);
+let result = l*w;
+document.write("Area of Rectangle is: " + result);
+}
+</script>
+</body>
+</html>
