@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author junay
+ *
+ */
+module StringHandling {
+}
