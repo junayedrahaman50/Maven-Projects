@@ -10,6 +10,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import com.hibernate.app.entity.Admin;
+import com.hibernate.app.entity.Passenger;
+import com.hibernate.app.entity.User;
+
 public class HibernateUtil {
 	//reference variable of session factory interface
 
@@ -29,11 +33,15 @@ public class HibernateUtil {
 			settings.put(Environment.PASS, "root");
 			settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
 			settings.put(Environment.SHOW_SQL, "true");
-			settings.put(Environment.HBM2DDL_AUTO, "create");
+			settings.put(Environment.HBM2DDL_AUTO, "update");
 			//using thread for concurrent execution
 			settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 			//passing settings to set properties
 			configuration.setProperties(settings);
+			
+			configuration.addAnnotatedClass(User.class);
+//			configuration.addAnnotatedClass(Admin.class);
+			configuration.addAnnotatedClass(Passenger.class);
 			
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 			System.out.println("hibernate java config ServiceRegistry created");

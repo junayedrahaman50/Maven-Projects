@@ -14,13 +14,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class Passenger extends User {
 	@Column(length = 50)
 	private String name;
 	@Column(length = 10)
 	private String phno;
-	@Column(length = 50, unique=true, nullable=false)
+	@Column(length = 50)
+	//@Column(length = 50, unique=true, nullable=false)
 	private String email;
 
 }
