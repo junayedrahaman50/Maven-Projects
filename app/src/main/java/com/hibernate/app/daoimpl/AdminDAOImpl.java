@@ -1,6 +1,6 @@
 package com.hibernate.app.daoimpl;
 
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 import org.hibernate.Session;
 
@@ -23,7 +23,7 @@ public class AdminDAOImpl implements AdminDao{
 	public boolean loginAdmin(String username, String password) {
 		Session session = HibernateUtil.getSession();
 		//Fetch Data
-		Admin admin = (Admin)session.get(Admin.class, (JOptionPane.showInputDialog("enter id", "type here")));
+		Admin admin = (Admin)session.get(Admin.class, 1);
 		if(admin.getUserName().equals(username) && admin.getPassword().equals(password))
 			return true;
 		else

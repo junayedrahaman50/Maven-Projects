@@ -40,7 +40,7 @@ public class HibernateUtil {
 			configuration.setProperties(settings);
 			
 			configuration.addAnnotatedClass(User.class);
-//			configuration.addAnnotatedClass(Admin.class);
+			configuration.addAnnotatedClass(Admin.class);
 			configuration.addAnnotatedClass(Passenger.class);
 			
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

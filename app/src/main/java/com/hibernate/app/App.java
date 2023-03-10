@@ -15,7 +15,7 @@ public class App
 {
     public static void main( String[] args )
     {
-//        AdminService aService = new AdminServiceImpl();
+        AdminService aService = new AdminServiceImpl();
 //        Admin admin = new Admin();
 //        admin.setAName("Akash");
 //        admin.setEmail("akash@gmail.com");
@@ -26,14 +26,26 @@ public class App
 //        System.out.println("Admin Registration Successful");
     	
     	PassengerService pService = new PassengerServiceImpl();
-    	Passenger passenger1 = new Passenger();
-    	passenger1.setName("Adam");
-    	passenger1.setEmail("adam@email.com");
-    	passenger1.setPhno("8799900509");
-    	passenger1.setUserName("Ad77");
-    	passenger1.setPassword("23jjjk");
-    	passenger1.setRole("user");
-    	pService.savePassenger(passenger1);
-    	System.out.println("Passenger Registered Successfully");
+//    	Passenger passenger1 = new Passenger();
+//    	passenger1.setName("Adam");
+//    	passenger1.setEmail("adam@email.com");
+//    	passenger1.setPhno("8799900509");
+//    	passenger1.setUserName("Ad77");
+//    	passenger1.setPassword("23jjjk");
+//    	passenger1.setRole("user");
+//    	pService.savePassenger(passenger1);
+//    	System.out.println("Passenger Registered Successfully");
+        boolean status = aService.loginAdmin("akash32", "A421");
+        if(status == true)
+        	System.out.println("login successful");
+        else
+        	System.out.println("Invalid Credentials");
+        
+        boolean status2 = pService.login("Ad77", "23jjj");
+        if(status2 == true)
+        	System.out.println("login successful");
+        else
+        	System.out.println("Invalid Credentials");
+
     }
 }
