@@ -40,6 +40,7 @@ public class PassengerDAOImpl implements PassengerDao{
 
 	@Override
 	public Passenger getPassenger(int id) {
+		//Fetch Passenger data
 		try(Session session = HibernateUtil.getSession()){
 			Passenger passenger = (Passenger)session.get(Passenger.class, id);
 			return passenger;
@@ -51,13 +52,41 @@ public class PassengerDAOImpl implements PassengerDao{
 
 	@Override
 	public Passenger updatePassenger(int id, Passenger passenger) {
-
+		//We use load when we know data exists
+		//update passenger
+		try(Session session = HibernateUtil.getSession()){
+			Passenger pass = (Passenger)session.load(Passenger.class, id);
+			pass.setName(passenger.getName());
+			pass.setEmail(passenger.getEmail());
+			pass.setPhno(passenger.getPhno());
+			pass.setUserName(passenger.getUserName());
+			pass.setPassword(passenger.getPassword());
+			//save fetched data
+			session.beginTransaction();
+			//save and update fetched data
+			//pass contains the updated values
+			session.saveOrUpdate(pass);
+			//commit
+			session.getTransaction().commit();
+			return pass;
+		}
+		catch(HibernateException e) {
+			System.out.println(e.getMessage());
+		}
 		return null;
 	}
 
 	@Override
 	public void deletePassenger(int id) throws PersistenceException {
-
+		try(Session session = HibernateUtil.getSession()){
+			Passenger pass = (Passenger)session.load(Passenger.class, id);
+			session.beginTransaction();
+			//Delete fetched passenger
+			session.delete(pass);
+			session.getTransaction().commit();
+		}catch(HibernateException e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

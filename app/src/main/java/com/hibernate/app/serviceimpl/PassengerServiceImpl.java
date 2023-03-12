@@ -33,13 +33,16 @@ public class PassengerServiceImpl implements PassengerService{
 
 	@Override
 	public PassengerDTO updatePassenger(int id, Passenger passenger) {
-	
-		return null;
+		//DAO to service layer
+		Passenger p = pdao.updatePassenger(id, passenger);
+	//sending object and its class as Modelmapper().map() arguments
+		return new ModelMapper().map(p, PassengerDTO.class);
 	}
 
 	@Override
 	public void deletePassenger(int id) throws PersistenceException {
-		// TODO Auto-generated method stub
+		// call deletePassenger of passengerDAOImpl
+		 pdao.deletePassenger(id);
 		
 	}
 
