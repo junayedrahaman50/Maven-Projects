@@ -2,6 +2,7 @@ package com.hibernate.app;
 
 import com.hibernate.app.entity.Admin;
 import com.hibernate.app.entity.Passenger;
+import com.hibernate.app.model.AdminDTO;
 import com.hibernate.app.model.PassengerDTO;
 import com.hibernate.app.service.AdminService;
 import com.hibernate.app.service.PassengerService;
@@ -71,8 +72,16 @@ public class App
 //    	PassengerDTO upPass = pService.updatePassenger(2, passenger);
 //    	System.out.println("Details updated successfully");
     	
+    	Admin admin = new Admin();
+    	admin.setAName("Nicola Tesla");
+    	admin.setEmail("nicola@tesla.com");
+    	admin.setUserName("NTesla007");
+    	admin.setPassword("secret");
+    	AdminDTO upAdmin = aService.updateAdmin(1, admin);
+    	System.out.println("Details updated successfully");
+    	
     	// ------ Delete Passenger ---------
-    	pService.deletePassenger(2);
-    	System.out.println("Deleted Successfully");
+//    	pService.deletePassenger(2);
+//    	System.out.println("Deleted Successfully");
     }
 }

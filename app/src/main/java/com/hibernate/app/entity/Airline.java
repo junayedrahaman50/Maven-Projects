@@ -26,6 +26,7 @@ public class Airline {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	//name can't have spaces
 	@Column(name="airline_name",length = 50)
 	private String airlineName;
 	private float fare;
